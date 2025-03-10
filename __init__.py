@@ -63,21 +63,11 @@ class ApplyRemoteModel(foo.Operator):
         that appears in the FiftyOne App when the operator is invoked.
         """
         inputs = types.Object()
-
-
-        dataset = ctx.dataset
-        schema = dataset.get_field_schema(ftype=fo.EmbeddedDocumentField,
-                                          embedded_doc_type=fo.Detections)
-        fields = schema.keys()
-        field_choices = types.DropdownView()
-        for field_name in fields:
-            field_choices.add_choice(field_name, label=field_name)
-
+        
         inputs.str(
             'det_field',
             required=True,
             label='Detections field',
-            view=field_choices,
         )
 
         # 1) Local filepath to existing YOLOv8 model weights
@@ -168,4 +158,3 @@ def register(plugin):
     Called by FiftyOne to discover and register your plugin’s operators/panels.
     """
     plugin.register(ApplyRemoteModel)
-    
