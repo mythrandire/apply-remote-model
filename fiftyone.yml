@@ -1,0 +1,9 @@
+name: "@mythrandire/apply-remote-model"
+type: plugin
+version: "1.0.0"
+description: "A Python-only plugin to run YOLOv8 models on the current FiftyOne dataset"
+fiftyone:
+  version: ">=1.2.0"
+
+operators:
+  - apply-remote-model
